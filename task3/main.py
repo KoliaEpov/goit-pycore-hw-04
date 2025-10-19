@@ -6,15 +6,14 @@ def main():
     iterate_directory(sys.argv[1])
     
 def iterate_directory(path, level=0):
-    base_dir = Path(__file__).parent.parent
     directory_path = Path(path)
     if (directory_path.exists()):
         for path in directory_path.iterdir():
             if (path.is_dir()):
-                print_directory(path.relative_to(base_dir), level)
+                print_directory(path, level)
                 iterate_directory(path, level+1)
             else:
-                print_file(path.relative_to(base_dir), level)
+                print_file(path, level)
     else:
         print('Directory not found')
 
