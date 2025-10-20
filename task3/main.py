@@ -10,10 +10,10 @@ def iterate_directory(path, level=0):
     if (directory_path.exists()):
         for path in directory_path.iterdir():
             if (path.is_dir()):
-                print_directory(path, level)
+                print_directory(path.name, level)
                 iterate_directory(path, level+1)
             else:
-                print_file(path, level)
+                print_file(path.name, level)
     else:
         print('Directory not found')
 
